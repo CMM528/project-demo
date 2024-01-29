@@ -1,12 +1,14 @@
-module.exports = {
+export default {
+  "root": true,
   "env": {
     "browser": true,
     "es2021": true,
     "node": true,
+    "vue/setup-compiler-macros": true
   },
   "extends": [
-    "standard-with-typescript",
     "plugin:vue/vue3-essential",
+    "plugin:vue/vue3-recommended",
     "plugin:prettier/recommended"
   ],
   "overrides": [
@@ -22,13 +24,21 @@ module.exports = {
       }
     }
   ],
+  "parser": "vue-eslint-parser",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "parser": "@typescript-eslint/parser",
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [".vue"]
   },
   "plugins": [
-    "vue"
+    "vue",
+    "@typescript-eslint"
   ],
+  "ignorePatterns": ["dist", ".eslintrc.cjs", "vite.config.js"],
   "rules": {
+    // "vue/mu"
+    "vue/multi-word-component-names": "off",
   }
 }
